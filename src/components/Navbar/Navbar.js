@@ -21,7 +21,7 @@ const Navbar = (props) => (
         <div className={`dropdown-menu ${styles.dropdown_menu}`} aria-labelledby="navbarDropdown">
         
         <div class="dropdown-content">
-          <GithubPicker className={`dropdown-item ${styles.dropdown_item}`} colors={props.colors}/>
+          <GithubPicker className={`dropdown-item ${styles.dropdown_item}`} colors={props.colors} onChangeComplete={props.pickedColorChange}/>
           </div>
         </div>
       </li>

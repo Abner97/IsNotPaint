@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import './App.css';
-import Main from './components/Main/Main';
 import Navbar from './components/Navbar/Navbar';
+import Home from './components/Home/Home';
+
 
 class App extends Component {
   state={
@@ -10,11 +11,13 @@ class App extends Component {
   }
 
   handleChangeComplete = (color) => {
-    this.setState({ background: color.hex });
+    this.setState({ pickedColor: color.hex });
+    console.log(this.state.pickedColor);
   };
 
+
   componentDidMount() {
-    fetch('https://api.noopschallenge.com/hexbot?count=14')
+    fetch('https://api.noopschallenge.com/hexbot?count=56')
     .then(res => res.json())
     .then((data) => {
       let hexValues=[];
@@ -30,7 +33,8 @@ class App extends Component {
 
   render(){
     return (
-      <Navbar colors={this.state.colors}/>
+      <Home colors={this.state.colors} pickedColorChange={this.handleChangeComplete} pickedColor={this.state.pickedColor}/>
+     // <Navbar />
     );
   }
 }

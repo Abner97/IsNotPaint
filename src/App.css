@@ -36,3 +36,171 @@
     transform: rotate(360deg);
   }
 }
+
+.grid-container{
+  cursor: pointer;
+}
+.grid-container > div{
+  border: 1px solid #585858;
+  border-width: 0 1px 1px 0;
+  float: left;
+}
+
+:root {
+  --main-color: #3f51b5;
+  --main-text-color: #000;
+  --second-text-color: #fff;
+  --highlight: #e81e63;
+}
+
+input {
+-webkit-appearance: none;
+-moz-appearance: none;
+appearance: none;
+}
+
+.App {
+  text-align: center;
+}
+
+.App-header {
+  background-color: var(--main-color);
+  min-height: 20vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-Content {
+  display: flex;
+  flex-direction: row;
+  color: var(--main-text-color);
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+.App-Settings {
+  width: 40%;
+  padding-left: 15px;
+  padding-bottom: 20px;
+  margin-right: 20px;
+  font-size: calc(10px + 1vmin);
+}
+
+.mobile-menu {
+  margin-bottom: 20px;
+  position: fixed;
+  left: 0;
+  margin-top: -0.86em;
+  z-index: 1;
+}
+
+.show-settings {
+  width: 40px;
+  height: 55px;
+  border-bottom-right-radius: 5px;
+  border-top-right-radius: 5px;
+  border: none;
+  margin: 15px 0;
+  font-size: 1.4em;
+  font-weight: bold;
+  color: var(--second-text-color);
+  background-color: var(--highlight);
+  border-bottom: 2px solid black;
+}
+
+.line {
+   left: 10px;
+   margin: 4px auto;
+   height: 3px;
+   width: 20px;
+   background: #fff;
+   border-radius: 2px;
+   display: block;
+}
+
+label {
+  padding: 10px;
+  border-radius: 5px;
+  border-bottom: 2px solid black;
+  color: #000;
+  color: var(--second-text-color);
+  background-color: var(--main-color);
+}
+
+#input_height,
+#input_width {
+  padding: 10px 15px;
+  border-radius: 5px;
+  border: none;
+  max-width: 30px;
+  margin: 5px 15px;
+  font-size: 0.8em;
+  color: var(--second-text-color);
+  background-color: var(--main-color);
+}
+
+#input_submit {
+  padding: 10px 15px;
+  border-radius: 5px;
+  border: none;
+  font-size: 0.9em;
+  margin-top: 10px;
+  background-color: var(--main-color);
+  color: var(--second-text-color);
+  border-bottom: 2px solid black;
+}
+
+#input_submit:hover {
+  opacity: 0.9;
+}
+
+.Canvas {
+  min-width: 60%;
+  max-width: 100%;
+  text-align: center;
+  font-size: calc(10px + 1vmin);
+}
+
+.circle-picker {
+  margin: 0 auto !important;
+}
+
+.Separator {
+  max-width: 90%;
+  margin: 20px auto;
+  border-color: var(--main-color);
+}
+
+table {
+  border-spacing: 0;
+}
+
+td, tr {
+  width: 20px;
+  height: 20px;
+  border: 1px solid #282c34;
+}
+
+/* MOBILE STYLES */
+@media screen and (max-width: 600px) {
+  .App-Content {
+    flex-direction: column;
+  }
+
+  .App-Settings,
+  .Canvas {
+    width: 100%;
+    padding: 0;
+  }
+
+  .Canvas {
+    text-align: center;
+  }
+}
+
