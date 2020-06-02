@@ -11,10 +11,23 @@ const Home = (props) => {
  
   return (
     <div className={styles.Home}>
-    <Navbar colors={props.colors} pickedColorChange={props.pickedColorChange}></Navbar> 
-    <Canvas color={props.pickedColor}/>
-  </div>
+	    <Navbar 
+	    	colors={props.colors}
+	    	pickedColorChange={props.pickedColorChange}
+	    	status={props.status}>
+	    </Navbar>
+	    
+	    <div className="container">
+	    	<div className="section-picture">
+	    		something
+	    	</div>
+	    	<div className="section-canvas">
+	    		<Canvas color={props.pickedColor}/>
+	    	</div>
+	    </div> 
+  	</div>
   );
+
 }
  
 

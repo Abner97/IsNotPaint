@@ -204,3 +204,26 @@ td, tr {
   }
 }
 
+
+.container{
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: space-between;
+}
+
+.section-picture{}
+
+.section-canvas{
+	margin-top: 2em;
+}
+
+.status{
+	color: white;
+	margin-top:1em;
+}
+
+.navbar{
+	height: 50px;
+}
+
+

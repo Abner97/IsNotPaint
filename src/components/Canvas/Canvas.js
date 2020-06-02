@@ -100,6 +100,8 @@ class Canvas extends Component {
               onTouchEnd={this.handleMouseState}
               onDoubleClick={this.handleColorRemove}>
             </table>
+            <br></br>
+            <button type="button" class="btn btn-primary">Print it</button>
           </div>
         
     )
