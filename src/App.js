@@ -32,7 +32,7 @@ class App extends Component {
           hexValues.push(element.value);
       });
       this.setState({ colors: hexValues })
-      console.log(this.state);
+      // console.log(this.state);
       this.setStatus('resolved');
     })
     .catch(

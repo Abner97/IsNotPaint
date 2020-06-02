@@ -6,6 +6,7 @@ import CanvasDraw from 'react-canvas-draw';
 
 
 import Canvas from '../Canvas/Canvas';
+import PaintedCanvas from '../PaintedCanvas/PaintedCanvas';
 
 const Home = (props) => {
  
@@ -17,12 +18,13 @@ const Home = (props) => {
 	    	status={props.status}>
 	    </Navbar>
 	    
-	    <div className="container">
-	    	<div className="section-picture">
-	    		something
+	    <div className="d-flex flex-sm-row flex-column justify-content-around bd-highlight mb-3">
+	    	<div className={'m-5 p-2'} >
+			<PaintedCanvas/>
+	    	
 	    	</div>
-	    	<div className="section-canvas">
-	    		<Canvas color={props.pickedColor}/>
+	    	<div className={'m-5 p-2'}>
+			<Canvas color={props.pickedColor}/>
 	    	</div>
 	    </div> 
   	</div>

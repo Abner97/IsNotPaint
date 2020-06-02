@@ -1,1 +1,29 @@
-.Canvas {}
+.Canvas {
+    min-width: 60%;
+    max-width: 100%;
+    text-align: center;
+    font-size: calc(10px + 1vmin);
+  }
+  
+  
+  .Separator {
+    max-width: 90%;
+    margin: 20px auto;
+    border-color: var(--main-color);
+  }
+  
+  .table1 {
+    border-spacing: 0;
+  }
+/*   
+  .table2.canvas_table td, .table2.canvas_table tr{
+    width: 20px;
+    height: 20px;
+    border: 1px solid #282c34;
+  } */
+
+  /* table.canvas_table tr{
+    width: 20px;
+    height: 20px;
+    border: 1px solid #282c34;
+  }  */
