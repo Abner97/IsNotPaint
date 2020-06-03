@@ -10,7 +10,7 @@ class App extends Component {
   state={
     colors:[],
     pickedColor: '#fff',
-    status:'idle'
+    status:'idle',
   }
 
   setStatus(value) {
@@ -23,24 +23,47 @@ class App extends Component {
   };
 
   componentDidMount() {
+    if(!window.localStorage.getItem('isTherePicker')){
+      this.createPicker();
+    }
+    else if(window.localStorage.getItem('isTherePicker') === 'yes'){
+      this.savedPicker();
+    } 
+  }
+  
+  createPicker(){
+    this.setStatus('loading');
     fetch('https://api.noopschallenge.com/hexbot?count=56')
-    .then(this.setStatus('loading'))
     .then(res => res.json())
     .then((data) => {
       let hexValues=[];
       data.colors.forEach(element => {
           hexValues.push(element.value);
       });
-      this.setState({ colors: hexValues })
-      // console.log(this.state);
+      this.setState({ colors: hexValues });
       this.setStatus('resolved');
+
+      window.localStorage.setItem('isTherePicker', 'yes');
+      window.localStorage.setItem('lastColors', hexValues);
+
+      console.log("hex", hexValues)
     })
     .catch(
       (errorData) =>{
           this.setStatus('rejected');
       })
-
   }
+
+  savedPicker(){
+      //this.setStatus('loading');//descomentar cuando funcione la función
+
+      let temp = window.localStorage.getItem('lastColors').split(",");
+      console.log("temp", temp);
+
+      this.setState({ colors : temp});
+      console.log("colors", this.state.colors);
+  }
+
 
   render(){
     return (

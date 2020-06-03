@@ -12,11 +12,11 @@ const Navbar = (props) => (
       <span className="navbar-toggler-icon"></span>
     </button>
 
-    {/* {props.status === 'loading' ? (<p className="status">Loading selector...</p>) : <p></p>}
+    {props.status === 'loading' ? (<p className="status">Loading selector...</p>) : <p></p>}
 
     {props.status === 'rejected' ? (<p className="status">Issue with the color API</p>) : <p></p>}
 
-    {props.status === 'resolved' ? ( */}
+    {props.status === 'resolved' ? (
 
     <div className="collapse navbar-collapse" id="navbarSupportedContent">
       <ul className="navbar-nav mr-auto">
@@ -41,7 +41,7 @@ const Navbar = (props) => (
       </ul>
     </div>
 
-    {/* ) : <p></p>} */}
+    ) : <p></p>}
 
     
 
