@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import styles from './Canvas.module.css';
+// import PropTypes from 'prop-types';
+// import styles from './Canvas.module.css';
 
 
 class Canvas extends Component {
@@ -15,57 +15,62 @@ class Canvas extends Component {
       cellColor: '#000',
       mouseDown: false,
       menuVisible: true,
-      canvas:{}
+      canvas: {}
 
     };
 
     this.componentCleanup = this.componentCleanup.bind(this);
-    this.componentDidMount=this.componentDidMount.bind(this);
-    this.clenWorkSpace=this.clenWorkSpace.bind(this);
-    this.fGetCellValues=this.fGetCellValues.bind(this);
+    this.componentDidMount = this.componentDidMount.bind(this);
+    this.cleanWorkSpace = this.cleanWorkSpace.bind(this);
+    this.fGetCellValues = this.fGetCellValues.bind(this);
 
   }
 
 
   componentCleanup() { // this will hold the cleanup code
-    let tableContent= document.getElementById('pixel_canvas').innerHTML;
+    let tableContent = document.getElementById('pixel_canvas').innerHTML;
+    let paintedCanvasContent=document.getElementById('pixel_canvas2').innerHTML;
+    let pickedColor = this.props.color;
     localStorage.setItem('canvasState', tableContent);
+    localStorage.setItem('canvas2State', paintedCanvasContent);
+    localStorage.setItem('pickedColor', pickedColor);
   }
 
-  cleanCells(){
+  cleanCells() {
     const canvas = document.querySelector("#pixel_canvas");
-      canvas.innerHTML = '';
-      this.setState({ background: '#fff' });
+    canvas.innerHTML = '';
+    this.setState({ background: '#fff' });
 
-      for (let x = 0; x < this.state.height; x++) {
-        let row = document.createElement("tr");
-        canvas.appendChild(row);
+    for (let x = 0; x < this.state.height; x++) {
+      let row = document.createElement("tr");
+      canvas.appendChild(row);
 
-        for (let y = 0; y < this.state.width; y++) {
-          let cell = document.createElement("td");
-          row.appendChild(cell);
-        }
+      for (let y = 0; y < this.state.width; y++) {
+        let cell = document.createElement("td");
+        row.appendChild(cell);
       }
+    }
   }
 
   componentDidMount() {
-    
+
     window.addEventListener('beforeunload', this.componentCleanup);
     this.cleanCells();
 
-      
+
     let source = localStorage.getItem('canvasState');
-  
+    let source2 =localStorage.getItem('canvas2State');
     if (source != null) {
       try {
-        document.getElementById('pixel_canvas').innerHTML=source;
+        document.getElementById('pixel_canvas').innerHTML = source;
+        document.getElementById('pixel_canvas2').innerHTML = source2;
       } catch (e) {
         alert("Something get wrong");
       }
-    } 
+    }
   }
 
- 
+
 
   componentWillUnmount() {
 
@@ -77,13 +82,15 @@ class Canvas extends Component {
 
   fGetCellValues() {
 
-     let source = document.getElementById('pixel_canvas').innerHTML;
-     document.getElementById('pixel_canvas2').innerHTML=source;
+    let source = document.getElementById('pixel_canvas').innerHTML;
+    document.getElementById('pixel_canvas2').innerHTML = source;
 
   }
 
-  clenWorkSpace(){
-    localStorage.clear('canvasState');
+  cleanWorkSpace() {
+    localStorage.removeItem('canvasState');
+    localStorage.removeItem('pickedColor');
+    this.props.pickedColorChange('#ffffff');
     this.cleanCells();
     this.fGetCellValues();
   }
@@ -125,11 +132,7 @@ class Canvas extends Component {
     event.target.style.backgroundColor = '';
   }
 
-  mobileMenu = () => {
-    this.setState(prevState => ({
-      menuVisible: !prevState.menuVisible
-    }));
-  }
+
 
 
 
@@ -140,8 +143,13 @@ class Canvas extends Component {
 
 
       <div className="Canvas">
+        <div className="d-flex flex-row justify-content-around bd-highlight mb-3">
+          <h2>Design Canvas</h2>
+          <b  className="currentColor mt-2">Current Color:</b>
+          <div class="box" style={{ background: this.props.color }}></div>
+        </div>
 
-        <h2>Design Canvas</h2>
+      
         <table className="table1 canvas_table"
           id="pixel_canvas"
           style={{ backgroundColor: this.state.background }}
@@ -155,8 +163,11 @@ class Canvas extends Component {
           onDoubleClick={this.handleColorRemove}>
         </table>
         <br></br>
-        <button onClick={this.fGetCellValues} type="button" className="btn btn-primary">Print it</button>
-        <button onClick={this.clenWorkSpace} type="button" className="btn btn-primary ml-3">Clean Work</button>
+        <div className="d-flex flex-sm-row flex-column justify-content-around bd-highlight mb-3">
+          <button onClick={this.fGetCellValues} type="button" className="btn btn-primary ml-3 mt-1">Print it</button>
+          <button onClick={this.cleanWorkSpace} type="button" className="btn btn-primary ml-3 mt-1">Clean Work</button>
+
+        </div>
       </div>
 
     )
